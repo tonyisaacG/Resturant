@@ -1,0 +1,105 @@
+    <p class="text-center text-primary fs-4" >المشتريات</p>
+    <button style="width:15% ;margin-right:75%; " mat-button (click)="openDialog()" type="button" class="btn btn-primary col-sm-3 ">إضافه 
+    </button>
+  <br>
+  <br>
+        <table style="width:90% ;margin-right: 5%;" class="table table-bordered  rounded text-center">
+            <tr  style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;"class="text-center">
+                <th>التاريخ</th>
+                <th>رقم الفاتوره</th>
+                <th>إجمالي الفاتوره</th>
+                <th></th>
+            </tr>
+            
+            <tr >
+                <td>4/8/2022</td>
+                <td>2</td>
+                <td>200</td>
+                <td>
+          <button style="border:none;" mat-button (click)="openDialog()"><i class="bi bi-pencil-square"></i></button>
+         <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
+                </td>
+            </tr>
+            <tr >
+                <td>4/8/2022</td>
+                <td>5</td>
+                <td>60</td>
+                <td>
+                    <button style="border:none;" mat-button (click)="openDialog()"><i class="bi bi-pencil-square"></i></button>
+                    <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
+                </td>
+            </tr>
+        </table> 
+   
+      <div class="form-group col-sm-6 mt-1 d-flex flex-row mx-5">
+        <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">اجمالي الفاتوره</label>
+        <input type="number" min="0" readonly id="Q" class=" col-6 text-center rounded" value="260" />
+      </div>
+  
+  
+
+
+        <!-- <tr >
+            <td>{{product.ID}}</td>
+            <td>{{product.Name}}</td>
+            <td>{{product.Quantity}}</td>
+            <td>{{product.Price}}</td>
+            <td><img style="width:120px;height:100px;" [src]="product.imgpath"></td>
+        </tr>  --> 
+       
+
+ <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button> 
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" 
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">تعديل عنصر</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">اسم الصنف</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">الوصف</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+        <button type="button" class="btn btn-primary">حفظ</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <ol>
+  <li>
+    <mat-form-field appearance="fill">
+      <mat-label>What's your name?</mat-label>
+      <input matInput [(ngModel)]="item">
+    </mat-form-field>
+  </li>
+  <li>
+    <button mat-raised-button (click)="openDialog()">Pick one</button>
+  </li>
+  <li *ngIf="total">
+    You chose: <i>{{animal}}</i>
+  </li>
+</ol> -->
+
+
+
+
+
+
+ 
+

@@ -1,0 +1,29 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img style="width: 60%; border-radius: 55%;" src="./assets/fresh.webp" alt="Company Logo" />
+    <p style="color: white;font-size:12px ;"   class="mt-2" >مطعم سى فوود لأشهى المأكولات </p>
+  </div>
+  <mat-divider></mat-divider>
+
+
+  <a  class="fs-6" mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+    <mat-icon><i class="bi bi-house-door"></i></mat-icon>&nbsp; الطلبات
+  </a>
+  <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a> -->
+  <a class="fs-6" mat-list-item routerLinkActive="list-item-active" routerLink="/purchases">
+    <mat-icon><i class="bi bi-bag-fill"></i></mat-icon>&nbsp; المشتريات
+  </a>
+  <a class="fs-6" mat-list-item routerLinkActive="list-item-active" routerLink="/consumption">
+    <mat-icon>dashboard</mat-icon>&nbsp; المصروفات
+  </a>
+  <a class="fs-6" mat-list-item routerLinkActive="list-item-active"  routerLink="/items">
+     <mat-icon>dashboard</mat-icon>&nbsp; اضافه عنصر </a>
+  <a class="fs-6" mat-list-item routerLinkActive="list-item-active"  routerLink="/add-user">
+     <mat-icon><i class="bi bi-person-plus-fill"></i></mat-icon> &nbsp; اضافه مستخدم  </a>
+  <a class="fs-6" mat-list-item routerLinkActive="list-item-active"  routerLink="/addproduct"> 
+    <mat-icon>dashboard</mat-icon>  إضافه منتج </a>
+  <a class="fs-6" mat-list-item routerLinkActive="list-item-active"  routerLink="/addcategory"> 
+    <mat-icon>dashboard</mat-icon>   مجموعات الاصناف </a>
+</mat-nav-list>

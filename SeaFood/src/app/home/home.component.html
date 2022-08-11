@@ -1,0 +1,93 @@
+<div style="background-color: rgb(243, 242, 242);">
+  <div class="mb-3  mx-5 card px-5 py-4 col-11">
+    <div class="d-flex"> <p style="margin-right:40%;" class="text-center text-primary fs-4">الطلبات</p>
+      <!-- <button style="margin-right:50%;" type="button" class="btn-close  " aria-label="Close"></button> -->
+    </div>
+    <button style="width:20% ;margin-right:75%; " mat-button (click)="openDialog()" type="button" class="btn btn-primary col-sm-3 ">تسجيل الطلبات
+    </button>
+    
+  <br>
+  <table style="width:90% ;margin-right: 5%;" class="table table-bordered  rounded text-center">
+    <tr style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;" class="text-center">
+      <th>التاريخ</th>
+      <th>رقم الطلب</th>
+      <th>النوع</th>
+      <th>الحاله</th>
+      <th>الاجمالي</th>
+      <th></th>
+    </tr>
+
+    <tr>
+      <td>6/8/2022</td>
+      <td>2</td>
+      <td>خارجي</td>
+      <td>جاري التحضير</td>
+      <td>150</td>
+      <td>
+        <div class="d-flex">
+        <button style="border:none;" mat-button (click)="openDialog()"><i class="bi bi-pencil-square"></i></button>
+         <div>
+        <button style="border:none;" data-bs-toggle="dropdown" >
+          <i class="bi bi-three-dots-vertical"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"> ف الانتظار</a></li>
+            <li><a class="dropdown-item" href="#"> جاري التحضير</a></li>
+            <li><a class="dropdown-item" href="#"> جاري التسليم</a></li>
+            <li><a class="dropdown-item" href="#"> تم التسليم</a></li>
+            <li><a class="dropdown-item" href="#">  مرفوض</a></li>
+          </ul>
+        </div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>6/8/2022</td>
+      <td>1</td>
+      <td>خارجي</td>
+      <td>تم التسليم </td>
+      <td>200</td>
+      <td>
+        <div class="d-flex">
+        <div> <button style="border:none;" mat-button (click)="openDialog()"><i class="bi bi-pencil-square"></i></button>
+        </div>
+         <div style="margin-top:2% ;">
+        <button style="border:none;" data-bs-toggle="dropdown" >
+          <i class="bi bi-three-dots-vertical"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"> ف الانتظار</a></li>
+            <li><a class="dropdown-item" href="#"> جاري التحضير</a></li>
+            <li><a class="dropdown-item" href="#"> جاري التسليم</a></li>
+            <li><a class="dropdown-item" href="#"> تم التسليم</a></li>
+            <li><a class="dropdown-item" href="#">  مرفوض</a></li>
+          </ul>
+        </div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>6/8/2022</td>
+      <td>3</td>
+      <td>داخلي</td>
+      <td>جاري التحضير</td>
+      <td>100</td>
+      <td>
+        <div class="d-flex">
+        <button style="border:none;" mat-button (click)="openDialog()"><i class="bi bi-pencil-square"></i></button>
+         <div>
+        <button style="border:none;" data-bs-toggle="dropdown" >
+          <i class="bi bi-three-dots-vertical"></i></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"> ف الانتظار</a></li>
+            <li><a class="dropdown-item" href="#"> جاري التحضير</a></li>
+            <li><a class="dropdown-item" href="#"> جاري التسليم</a></li>
+            <li><a class="dropdown-item" href="#"> تم التسليم</a></li>
+            <li><a class="dropdown-item" href="#">  مرفوض</a></li>
+          </ul>
+        </div></div>
+      </td>
+    </tr>
+  </table>
+
+</div>
+<div class="form-group col-sm-6 mt-1 d-flex flex-row mx-5">
+  <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">اجمالي الطلبات</label>
+  <input type="number" min="0" readonly id="Q" class=" col-6 text-center rounded" value="450" />
+</div>
