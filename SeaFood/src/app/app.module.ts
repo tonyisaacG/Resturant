@@ -41,6 +41,7 @@ import { PannerComponent } from './panner/panner.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardsComponent } from './cards/cards.component';
+// import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { CardsComponent } from './cards/cards.component';
     MaterialModule,
     NgbModule,
     HttpClientModule,
+    // ToastrModule.forRoot(),
   
   ],
   providers: [],
