@@ -24,7 +24,6 @@ import { ConsumptionComponent } from './consumption/consumption.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
-import { ModalTypeComponent } from './modal-type/modal-type.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddModalComponent } from './add-modal/add-modal.component';
@@ -35,12 +34,7 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductmodalComponent } from './modals/addproductmodal/addproductmodal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { PannerComponent } from './panner/panner.component';
-import { AboutComponent } from './about/about.component';
-import { FooterComponent } from './footer/footer.component';
-import { CardsComponent } from './cards/cards.component';
+
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -54,7 +48,6 @@ import { CardsComponent } from './cards/cards.component';
     PurchasesComponent,
     ItemsComponent,
     ConsumptionComponent,
-    ModalTypeComponent,
     AddUserComponent,
     AddModalComponent,
     ConsumptionmodalComponent,
@@ -63,12 +56,7 @@ import { CardsComponent } from './cards/cards.component';
     AddproductComponent,
     AddcategoryComponent,
     AddproductmodalComponent,
-    NavbarComponent,
-    LandingpageComponent,
-    PannerComponent,
-    AboutComponent,
-    FooterComponent,
-    CardsComponent,
+
     
   ],
   imports: [
