@@ -35,12 +35,11 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductmodalComponent } from './modals/addproductmodal/addproductmodal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { PannerComponent } from './panner/panner.component';
-import { AboutComponent } from './about/about.component';
-import { FooterComponent } from './footer/footer.component';
-import { CardsComponent } from './cards/cards.component';
+import { SharedModule } from './shared/shared.module';
+import { ProductsModule } from './products/products.module';
+import { SingInComponent } from './sing-in/sing-in.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -62,12 +61,8 @@ import { CardsComponent } from './cards/cards.component';
     AddproductComponent,
     AddcategoryComponent,
     AddproductmodalComponent,
-    NavbarComponent,
-    LandingpageComponent,
-    PannerComponent,
-    AboutComponent,
-    FooterComponent,
-    CardsComponent,
+    SingInComponent,
+
     
   ],
   imports: [
@@ -88,6 +83,10 @@ import { CardsComponent } from './cards/cards.component';
     MaterialModule,
     NgbModule,
     HttpClientModule,
+    SharedModule,
+    ProductsModule
+    FormsModule, 
+    ReactiveFormsModule
   
   ],
   providers: [],
