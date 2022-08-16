@@ -22,7 +22,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ItemsComponent } from './items/items.component';
 import { ConsumptionComponent } from './consumption/consumption.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -35,16 +34,20 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductmodalComponent } from './modals/addproductmodal/addproductmodal.component';
 import { HttpClientModule } from '@angular/common/http';
 //<<<<<<< shehab-bransh
-//import { SharedModule } from './shared/shared.module';
-//import { ProductsModule } from './products/products.module';
-//import { SingInComponent } from './sing-in/sing-in.component';
+import { SharedModule } from './shared/shared.module';
+import { ProductsModule } from './products/products.module';
+import { SingInComponent } from './sing-in/sing-in.component';
 
+//<<<<<<< shehab-bransh
+import { UserPageComponent } from './user-page/user-page.component';
+//=======
 //import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-=======
+//=======
 
 // import { ToastrModule } from 'ngx-toastr';
 //>>>>>>> main
 
+//>>>>>>> main
 
 @NgModule({
   declarations: [
@@ -65,8 +68,13 @@ import { HttpClientModule } from '@angular/common/http';
     AddcategoryComponent,
     AddproductmodalComponent,
 //<<<<<<< shehab-bransh
+    SingInComponent,
+    UserPageComponent,
+//=======
+//<<<<<<< shehab-bransh
   //  SingInComponent,
 //=======
+//>>>>>>> main
 //>>>>>>> main
 
     
@@ -84,11 +92,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatSliderModule,
     MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
     MaterialModule,
     NgbModule,
     HttpClientModule,
+//<<<<<<< shehab-bransh
+    SharedModule,
+    ProductsModule
+    
+//=======
 //<<<<<<< shehab-bransh
    // SharedModule,
    // ProductsModule
@@ -96,6 +107,7 @@ import { HttpClientModule } from '@angular/common/http';
   //  ReactiveFormsModule
 //=======
     // ToastrModule.forRoot(),
+//>>>>>>> main
 //>>>>>>> main
   
   ],
