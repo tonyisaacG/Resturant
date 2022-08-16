@@ -23,7 +23,6 @@ import { ItemsComponent } from './items/items.component';
 import { ConsumptionComponent } from './consumption/consumption.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MaterialModule } from '../material.module';
-import { ModalTypeComponent } from './modal-type/modal-type.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddModalComponent } from './add-modal/add-modal.component';
@@ -34,11 +33,21 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductmodalComponent } from './modals/addproductmodal/addproductmodal.component';
 import { HttpClientModule } from '@angular/common/http';
+//<<<<<<< shehab-bransh
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
 import { SingInComponent } from './sing-in/sing-in.component';
 
+//<<<<<<< shehab-bransh
 import { UserPageComponent } from './user-page/user-page.component';
+//=======
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//=======
+
+// import { ToastrModule } from 'ngx-toastr';
+//>>>>>>> main
+
+//>>>>>>> main
 
 @NgModule({
   declarations: [
@@ -50,7 +59,6 @@ import { UserPageComponent } from './user-page/user-page.component';
     PurchasesComponent,
     ItemsComponent,
     ConsumptionComponent,
-    ModalTypeComponent,
     AddUserComponent,
     AddModalComponent,
     ConsumptionmodalComponent,
@@ -59,8 +67,15 @@ import { UserPageComponent } from './user-page/user-page.component';
     AddproductComponent,
     AddcategoryComponent,
     AddproductmodalComponent,
+//<<<<<<< shehab-bransh
     SingInComponent,
     UserPageComponent,
+//=======
+//<<<<<<< shehab-bransh
+  //  SingInComponent,
+//=======
+//>>>>>>> main
+//>>>>>>> main
 
     
   ],
@@ -80,9 +95,20 @@ import { UserPageComponent } from './user-page/user-page.component';
     MaterialModule,
     NgbModule,
     HttpClientModule,
+//<<<<<<< shehab-bransh
     SharedModule,
     ProductsModule
     
+//=======
+//<<<<<<< shehab-bransh
+   // SharedModule,
+   // ProductsModule
+   // FormsModule, 
+  //  ReactiveFormsModule
+//=======
+    // ToastrModule.forRoot(),
+//>>>>>>> main
+//>>>>>>> main
   
   ],
   providers: [],
