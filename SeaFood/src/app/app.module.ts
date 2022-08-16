@@ -34,8 +34,16 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductmodalComponent } from './modals/addproductmodal/addproductmodal.component';
 import { HttpClientModule } from '@angular/common/http';
+//<<<<<<< shehab-bransh
+//import { SharedModule } from './shared/shared.module';
+//import { ProductsModule } from './products/products.module';
+//import { SingInComponent } from './sing-in/sing-in.component';
+
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+=======
 
 // import { ToastrModule } from 'ngx-toastr';
+//>>>>>>> main
 
 
 @NgModule({
@@ -56,6 +64,10 @@ import { HttpClientModule } from '@angular/common/http';
     AddproductComponent,
     AddcategoryComponent,
     AddproductmodalComponent,
+//<<<<<<< shehab-bransh
+  //  SingInComponent,
+//=======
+//>>>>>>> main
 
     
   ],
@@ -77,7 +89,14 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     NgbModule,
     HttpClientModule,
+//<<<<<<< shehab-bransh
+   // SharedModule,
+   // ProductsModule
+   // FormsModule, 
+  //  ReactiveFormsModule
+//=======
     // ToastrModule.forRoot(),
+//>>>>>>> main
   
   ],
   providers: [],
