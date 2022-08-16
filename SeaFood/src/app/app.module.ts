@@ -22,7 +22,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ItemsComponent } from './items/items.component';
 import { ConsumptionComponent } from './consumption/consumption.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
 import { ModalTypeComponent } from './modal-type/modal-type.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -39,8 +38,7 @@ import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './products/products.module';
 import { SingInComponent } from './sing-in/sing-in.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +60,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddcategoryComponent,
     AddproductmodalComponent,
     SingInComponent,
+    UserPageComponent,
 
     
   ],
@@ -78,15 +77,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatSliderModule,
     MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
     MaterialModule,
     NgbModule,
     HttpClientModule,
     SharedModule,
     ProductsModule
-    FormsModule, 
-    ReactiveFormsModule
+    
   
   ],
   providers: [],
