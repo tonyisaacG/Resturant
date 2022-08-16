@@ -24,7 +24,6 @@ import { ConsumptionComponent } from './consumption/consumption.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
-import { ModalTypeComponent } from './modal-type/modal-type.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddModalComponent } from './add-modal/add-modal.component';
@@ -35,11 +34,16 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductmodalComponent } from './modals/addproductmodal/addproductmodal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/shared.module';
-import { ProductsModule } from './products/products.module';
-import { SingInComponent } from './sing-in/sing-in.component';
+//<<<<<<< shehab-bransh
+//import { SharedModule } from './shared/shared.module';
+//import { ProductsModule } from './products/products.module';
+//import { SingInComponent } from './sing-in/sing-in.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+=======
+
+// import { ToastrModule } from 'ngx-toastr';
+//>>>>>>> main
 
 
 @NgModule({
@@ -52,7 +56,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PurchasesComponent,
     ItemsComponent,
     ConsumptionComponent,
-    ModalTypeComponent,
     AddUserComponent,
     AddModalComponent,
     ConsumptionmodalComponent,
@@ -61,7 +64,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddproductComponent,
     AddcategoryComponent,
     AddproductmodalComponent,
-    SingInComponent,
+//<<<<<<< shehab-bransh
+  //  SingInComponent,
+//=======
+//>>>>>>> main
 
     
   ],
@@ -83,10 +89,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     NgbModule,
     HttpClientModule,
-    SharedModule,
-    ProductsModule
-    FormsModule, 
-    ReactiveFormsModule
+//<<<<<<< shehab-bransh
+   // SharedModule,
+   // ProductsModule
+   // FormsModule, 
+  //  ReactiveFormsModule
+//=======
+    // ToastrModule.forRoot(),
+//>>>>>>> main
   
   ],
   providers: [],
