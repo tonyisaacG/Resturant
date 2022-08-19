@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: 'user', component: UserPageComponent, children: [
       { path: "home", component: LandingpageComponent },
-      {path: "cart", component: CartComponent},
+      { path: "cart", component: CartComponent},
       { path: "personalData", component: PersonalDataComponent,canActivate:[OrderOkActivateGuard]},
       { path: "products", component: AllProductComponent },
       { path: "products/:id", component: ProductDetailsComponent },
