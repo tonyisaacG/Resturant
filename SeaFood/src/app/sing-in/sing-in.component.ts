@@ -35,7 +35,7 @@ export class SingInComponent implements OnInit {
                 this.UserLogForm = this.fb.group({
                   username:['',Validators.required],
                   passwsord:['',Validators.required,Validators.pattern("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$")]
-                }).;
+                });
               }
 
 
