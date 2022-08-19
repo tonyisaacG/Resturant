@@ -1,18 +1,24 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SelectComponent } from './components/select/select.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SelectComponent } from './components/select/select.component';
 
 @NgModule({
-  declarations: [NavbarComponent, SelectComponent, FooterComponent],
+  declarations: [NavbarComponent, FooterComponent, LandingpageComponent, SpinnerComponent, SelectComponent],
   imports: [
     CommonModule
   ],
   exports :[
     NavbarComponent,
-    SelectComponent,
-    FooterComponent
-  ]
+    FooterComponent,
+    LandingpageComponent,
+    SpinnerComponent,
+    SelectComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class SharedModule { }

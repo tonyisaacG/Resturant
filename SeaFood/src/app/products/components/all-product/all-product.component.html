@@ -1,28 +1,13 @@
-<div class='container'>
+<div class='container' style="min-height: 100vh;">
 
     <div class="my-2 w-25">
-        <label for="" class="my-1">categories:</label>
-        <select title="category-filter" class="form-control" (change)="FilterCategory($event)">
-            <option value="All" selected> All</option>
-            <option value="{{item}}" *ngFor="let item of categories">{{item}}</option>
-
-        </select>
+        <app-select [data]="categories" [title]="'categories'" (selectedValue)="FilterCategory($event)"></app-select>
     </div>
     <div class="row" *ngIf="!loading">
-        <div class="col-md-4 col-sm-12" *ngFor="let item of products" routerLink="/products/{{item.id}}">
-            <div class="card" >
-                    <img src="{{item.image}}" alt="">
-                    <div class="details">
-                        <div class="details-sub">
-                            <h4>{{item.title}}</h4>
-                            <h5 class="price">{{item.price}}</h5>
-                        </div>
-                        <p>{{item.description}}</p>
-                        <button (click)="AddToCart(item)">Add To Cart</button>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-4 col-sm-12" *ngFor="let item of products"   >
+           <app-product [data]="item" (item)="AddToCart($event)"></app-product>
         </div>
+    </div>
         <div class="text-center w-100" *ngIf="loading">
             <app-spinner></app-spinner>
 

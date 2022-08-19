@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthUserService } from '../BackEnd/Services/auth-user.service';
 import { OrderdetailsmodalComponent } from '../modals/orderdetailsmodal/orderdetailsmodal.component';
 
 @Component({
@@ -11,7 +12,9 @@ import { OrderdetailsmodalComponent } from '../modals/orderdetailsmodal/orderdet
 export class HeaderComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   dialogRef: MatDialogRef <any> ;
-  constructor(public dialog: MatDialog){}
+
+  constructor(public dialog: MatDialog,
+              private auth:AuthUserService,private router:Router){}
 
   
   openDialog(): void {
@@ -30,7 +33,12 @@ export class HeaderComponent implements OnInit {
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
+  }
+
+
   
 
+  logout(){
+    this.auth.LogOut();
   }
 }

@@ -1,1 +1,5 @@
-<p>select workswsadwwsssssssssssssssssssssss!</p>
+<label for="" class="my-1">{{title}}:</label>
+<select title="category-filter" class="form-control" (change)="detectChanges($event)">
+    <option value="All" selected> All</option>
+    <option value="{{item.id}}" *ngFor="let item of data">{{item.name}}</option>
+</select>

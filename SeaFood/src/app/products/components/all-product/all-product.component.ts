@@ -13,12 +13,12 @@ export class AllProductComponent implements OnInit {
   categories:any[]=[];
   loading:boolean=false;
   cartProducts:any[]=[]
-  qty:number=1
 
   ngOnInit(): void {
     this.GetProducts();
     this.GetCategories();
   }
+
   
   GetProducts(){
     this.loading=true
@@ -27,7 +27,7 @@ export class AllProductComponent implements OnInit {
       this.loading=false
       
     }, error =>{
-      alert(error)
+      // alert(error)
     }) }
 
     GetCategories(){
@@ -37,7 +37,7 @@ export class AllProductComponent implements OnInit {
         this.categories = res;
         this.loading=false
       }, error =>{
-        alert(error)
+        // alert(error)
       })}
 
       FilterCategory(event:any){
@@ -63,37 +63,23 @@ export class AllProductComponent implements OnInit {
           })
       }
 
-      AddToCart(item:any ){
-
+      AddToCart(event:any){
+        
         if("cart" in localStorage){
           this.cartProducts = JSON.parse(localStorage.getItem('cart')!)
-          let exist = this.cartProducts.find(res => res.id  == item.id)
+          let exist = this.cartProducts.find(res => res.item.product_id  == event.item.product_id)
           if(exist){
             alert("product is already in your cart")
           }else{
-            this.cartProducts.push(item)
+            this.cartProducts.push(event)
             localStorage.setItem('cart',JSON.stringify(this.cartProducts))
           }
          
         }
         else{
-          this.cartProducts.push({...item, qty: 1})
+          this.cartProducts.push(event)
           localStorage.setItem('cart',JSON.stringify(this.cartProducts))
         }
 
-
-//  if("cart" in localStorage){
-      //   this.cartProducts = JSON.parse(localStorage.getItem('cart')!)
-      //   let exist = this.cartProducts.find(res => res.id == item.id)
-      //   if(exist){
-      //     alert('pproduct is already in your cart')
-      //   }else {
-      //     this.cartProducts.push(item)
-      //     localStorage.setItem("cart", JSON.stringify(this.cartProducts))
-      //   }
-      //  } else {
-      //   this.cartProducts.push(item)
-      //   localStorage.setItem("cart",JSON.stringify(this.cartProducts))
-      //  }
       }
 }

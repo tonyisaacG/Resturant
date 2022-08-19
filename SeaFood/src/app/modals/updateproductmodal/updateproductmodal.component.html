@@ -1,0 +1,73 @@
+<div class=" p-1">
+  <div class="d-flex">
+    <p style="margin-right:30%;" class="text-center text-primary fs-4">تعديل منتج</p>
+    <button style="margin-right:50%;" (click)="onNoClick()" type="button" class="btn-close  "
+      aria-label="Close"></button>
+  </div>
+  <div class="d-flex flex-row container">
+    <div class="col-12  ">
+      <form [formGroup]="uploadform" (ngSubmit)="onSubmit()" style="margin-right:4% ;" class="form-horizontal col-12">
+
+
+        <div class="d-flex flex-row">
+          <div class="form-group col-sm-4 mt-1 ">
+            <label for="Q" class="col-sm-4 control-label fs-6 fw-bold">اسم المنتج</label>
+            <div class="col-sm-10">
+              <input type="text" id="Q" class="form-control" formControlName="product_name"
+              [(value)]="updateproduct.product_name"/>
+            </div>
+          </div>
+
+          <div class="form-group col-4">
+            <label for="item" class="col-sm-6 control-label fs-6 fw-bold"> مجموعات الاصناف</label>
+            <div class="col-sm-10">
+              <select id="item" class="form-select" #role (change)='onSelected(cat.id.toString())' formControlName="cat_name"
+                [(ngModel)]="updateproduct.cat_id">
+                <option *ngFor="let cat of categories" [value]="cat.id"> {{cat.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-3 "  style="position: relative; width: 200px;height: 200px;">
+            <img style="position:absolute;width:100% ;height:100% ;display:block; margin-right: 10%;" formControlName="product_imagePath"
+              src="{{updateproduct.product_imagePath}}" alt="..." class="img-thumbnail">
+          </div>
+
+        </div>
+        <br>
+        <div class="d-flex flex-row">
+          <div class="form-group col-4">
+            <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">الوصف</label>
+            <div class="col-sm-10">
+              <input id="Q" class="form-control" formControlName="product_description"
+                [(value)]="updateproduct.product_description" />
+            </div>
+          </div>
+
+          <div class="form-group col-sm-4 mt-1">
+            <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">السعر</label>
+            <div class="col-sm-10">
+              <input type="text" min="0" id="Q" class="form-control" formControlName="product_price"
+                [(value)]="updateproduct.product_price" />
+            </div>
+          </div>
+
+          <div class="col-3 ">
+            <input type="file" (change)="uploadFile($event)">
+          </div>
+
+        </div>
+
+        <div class="d-flex flex-row">
+          <div class="form-group col-6">
+
+          </div>
+        </div>
+        <div>
+          <button style="width:25% ;margin-right: 70%;" type="Submit" class="btn btn-primary  ">حفظ
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

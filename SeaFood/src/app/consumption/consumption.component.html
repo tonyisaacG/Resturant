@@ -1,39 +1,26 @@
-
 <div style="background-color: rgb(243, 242, 242);">
-    <p class="text-center text-primary fs-4" >المصروفات</p>
-    <button style="width:15% ;margin-right:75%; " mat-button (click)="openDialog()" type="button" class="btn btn-primary col-sm-3 "> اضافه
+    <p class="text-center text-primary fs-4">المصروفات</p>
+    <button style="width:15% ;margin-right:80%; " mat-button (click)="openDialog(0,'Add')" type="button"
+        class="btn btn-primary col-sm-3 "> اضافه
     </button>
     <br> <br>
 
-        <table style="width:90% ;margin-right: 5%;" class="table table-bordered  rounded text-center">
-            <tr  style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;"class="text-center">
-                <th>التاريخ</th>
-                <th>رقم الفاتوره</th>
-                <th>اجمالي الفاتوره</th>
-                <th></th>
-            </tr>
-            
-            <tr >
-                <td>4/8/2022</td>
-                <td>2</td>
-                <td>200</td>
-                <td>
-                    <button style="border:none;"  mat-button (click)="openDialog()"><i class="bi bi-pencil-square"></i></button>
-                    <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
-                </td>
-            </tr>
-            <tr >
-                <td>4/8/2022</td>
-                <td>5</td>
-                <td>60</td>
-                <td>
-                    <button style="border:none;"  mat-button (click)="openDialog()"><i class="bi bi-pencil-square"></i></button>
-                    <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
-                </td>
-            </tr>
-        </table> 
-      </div>
-      <div class="form-group col-sm-6 mt-1 d-flex flex-row mx-5">
-        <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">اجمالي المصروفات</label>
-        <input type="number" min="0" readonly id="Q" class=" col-6 text-center rounded" value="195" />
-      </div>
+    <table style="width:90% ;margin-right: 5%;" class="table table-bordered  rounded text-center">
+        <tr style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;" class="text-center">
+            <th>رقم الفاتوره</th>
+            <th>التاريخ</th>
+            <th></th>
+        </tr>
+
+        <tr *ngFor="let consum of ConsumLst">
+            <td>{{consum.bill_id}}</td>
+            <td>{{consum.bill_date|date:'short'}}</td>
+            <td>
+                <button style="border:none;" mat-button (click)="openDialog(consum.bill_id,'Edit')"><i
+                        class="bi bi-pencil-square"></i></button>
+                <button style="border:none;" mat-button (click)="deleteOneConsumInD(consum.bill_id)"><i class="bi bi-trash-fill"></i></button>
+            </td>
+        </tr>
+
+    </table>
+</div>

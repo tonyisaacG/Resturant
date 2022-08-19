@@ -17,7 +17,7 @@
               >keyboard_arrow_down</mat-icon >
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item> <mat-icon>exit_to_app</mat-icon> Logout</button>
+            <button mat-menu-item (click)="logout()"> <mat-icon>exit_to_app</mat-icon> Logout</button>
           </mat-menu>
         </li>
       </ul>
@@ -30,7 +30,7 @@
     <div  >
           <button  data-bs-toggle="dropdown" 
        
-          ><i class="bi bi-bell"></i></button>
+          ><i class="bi bi-bell-fill text-white"></i></button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#" mat-button (click)="openDialog()" >طلب 1</a></li>
             <li><a class="dropdown-item" href="#">طلب 2</a></li>

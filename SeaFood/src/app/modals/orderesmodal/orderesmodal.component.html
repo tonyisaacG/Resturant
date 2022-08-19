@@ -1,171 +1,152 @@
-
-    <div >
-      <div class="d-flex">
-        <p style="margin-right:40%;" class="text-center text-primary fs-4">إضافه طلب</p>
-       <button style="margin-right:40%;" (click)="onNoClick()" type="button" class="btn-close  " aria-label="Close"></button>
-     </div>
- <div class="card p-2">
-  <div class="d-flex flex-row">
-    <div class="form-group col-4">
-      <label for="Q" class="col-sm-6 control-label fs-6 fw-bold">اسم العميل</label>
-      <div class="col-sm-10">
-        <input type="text"  id="Q" class="form-control" />
-      </div>
-    </div>
-
-    <div class="form-group col-sm-4 mt-1">
-      <label for="Q" class="col-sm-6 control-label fs-6 fw-bold">رقم التليفون</label>
-      <div class="col-sm-10">
-        <input type="number" min="0" id="Q" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group col-sm-4 mt-1">
-      <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">العنوان </label>
-      <div class="col-sm-10">
-        <input type="text"  id="Q" class="form-control" />
-      </div>
-    </div>
+<div >
+  <div class="d-flex">
+    <p style="margin-right:40%;" class="text-center text-primary fs-4">{{TitleOrder}}</p>
+    <button style="margin-right:40%;" (click)="onNoClick()" type="button" class="btn-close  "
+      aria-label="Close"></button>
   </div>
+  <div class="card p-2 d-flex flex-row justify-content-center align-items-center">
 
+    <form #orderForm="ngForm" name="orderform" novalidate class="form-horizontal col-12" role="form">
+      <div class="  d-flex flex-row justify-content-center align-items-center mb-1">
 
-
-
- </div>
-
-      <form style="margin-right:4% ;" class="form-horizontal col-12" ng-submit="submitStudnetForm()" role="form">
-  
-  
-        <div class="d-flex flex-row">
-          <div class="form-group col-sm-6">
-            <label for="dob" class="col-sm-3 control-label fs-6 fw-bold">التاريخ</label>
-            <div class="col-sm-10">
-              <input type="date" id="dob" class="form-control" />
-            </div>
-            <div class="col-sm-7"></div>
-          </div>
-          <div class="form-group col-6">
-            <label for="item" class="col-sm-6 control-label fs-6 fw-bold"> مجموعات الاصناف</label>
-            <div class="col-sm-10">
-              <select id="item" class="form-select">
-                <option value="male"> مشويات</option>
-                <option value="female"> مقليات </option>
-              </select>
-            </div>
-          </div>
-  
-  
-        </div>
-        <div class="d-flex flex-row">
-          <div class="form-group col-6">
-            <label for="item" class="col-sm-6 control-label fs-6 fw-bold">اسم المنتج</label>
-            <div class="col-sm-10">
-              <select id="item" class="form-select">
-                <option value="male">سمك بوري مشوي</option>
-                <option value="female">سمك بلطي مشوي</option>
-              </select>
-            </div>
-          </div>
-  
-          <div class="form-group col-sm-6 mt-1">
-            <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">العدد</label>
-            <div class="col-sm-10">
-              <input type="number" min="0" id="Q" class="form-control" />
-            </div>
+        <div class="form-group col-sm-4 mt-1 ">
+          <label for="nameClient" class="col-sm-12  control-label fs-6 fw-bold">اسم
+            العميل</label>
+          <div class="col-sm-11">
+            <input type="text" id="nameClient" #nameclient="ngModel"
+              [class.is-invalid]="nameclient.touched&&nameclient.invalid" required name="nameClient"
+              class="form-control" [(ngModel)]="orderObject.nameClient" />
           </div>
         </div>
 
-        <div class="d-flex flex-row">
-            <div class="form-group col-6">
-              <label for="item" class="col-sm-6 control-label fs-6 fw-bold">النوع </label>
-              <div class="col-sm-10">
-                <select id="item" class="form-select">
-                  <option value="male">خارجي </option>
-                  <option value="female">  داخلي</option>
-                  <option value="female">  عن طريق الموقع</option>
-                </select>
-              </div>
-            </div>
-    
-            <!-- <div class="form-group col-sm-6 mt-1">
-              <label for="Q" class="col-sm-3 control-label fs-6 fw-bold">الحاله</label>
-              <div class="col-sm-10">
-                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" >
-                    <label class="form-check-label" for="flexRadioDisabled">
-                      جاري التحضير 
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" >
-                    <label class="form-check-label" for="flexRadioCheckedDisabled">
-                   تم التسليم
-                    </label>
-                  </div>
-              </div>
-            </div> -->
+        <div class="form-group col-sm-4 mt-1">
+          <label for="phoneClient" class="col-sm-12 control-label fs-6 fw-bold">رقم
+            التليفون</label>
+          <div class="col-sm-11">
+            <input type="string" #phone="ngModel" [class.is-invalid]="phone.touched&&phone.invalid" required
+              pattern="(011|012|015|010)[0-9]{8}" id="phoneClient" name="phoneClient" class="form-control"
+              [(ngModel)]="orderObject.phoneClient" />
           </div>
+        </div>
 
- <div> <button style="width:20% ;margin-right:70%;" type="button" class="btn btn-primary  ">اضافه
-          </button></div>
-      </form>
-    </div>
-  
-    <br>
-    <table style="width:90% ;margin-right: 5%;" class="table table-bordered  rounded text-center">
-      <tr style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;" class="text-center">
-        <th>رقم الطلب</th>
-  
-        <th>الصنف</th>
-        <th>الكميه</th>
-        <th>السعر</th>
-        <th>الاجمالي</th>
-        <th></th>
-      </tr>
-  
-      <tr>
-        <td>1</td>
-        <td>سمك بوري مشوي</td>
-        <td>3</td>
-        <td>50</td>
-        <td>150</td>
-  
-        <td>
-          <button style="border:none;"><i class="bi bi-pencil-square"></i></button>
-          <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>ارز </td>
-        <td>3</td>
-        <td>12</td>
-        <td>36</td>
-  
-        <td>
-          <button style="border:none;"><i class="bi bi-pencil-square"></i></button>
-          <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>طحينه </td>
-        <td>3</td>
-        <td>3</td>
-        <td>9</td>
-  
-        <td>
-          <button style="border:none;"><i class="bi bi-pencil-square"></i></button>
-          <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
-        </td>
-      </tr>
-    </table>
-  
- 
-  <div class="d-flex" >
-    <label for="Q" class=" control-label fs-6 fw-bold">اجمالي الطلب</label>
-    <input type="number" min="0" readonly id="Q" class="  text-center rounded" value="195" />
-   <button style="width: 30% ;margin-right:10%;" type="button" class="btn btn-primary  ">تسجيل الطلب
-    </button>
-    <button style="width: 15% ;margin-right:1%;" type="button" (click)="onNoClick()" class="btn btn-danger  ">إغلاق 
-    </button>
+        <div class="form-group col-sm-4 mt-1">
+          <label for="addressClient" class="col-sm-12 control-label fs-6 fw-bold">العنوان
+          </label>
+          <div class="col-sm-11">
+            <input type="text" #addressClient="ngModel"
+              [class.is-invalid]="addressClient.touched&&addressClient.invalid" id="addressClient" required
+              name="addressClient" class="form-control" [(ngModel)]="orderObject.addressClient" />
+          </div>
+        </div>
+
+      </div>
+
+      <div class=" d-flex flex-row justify-content-center align-items-center mt-1">
+        <div class="form-group me-2 col-2">
+          <label for="item" class="col-6 mb-2 control-label fs-6 fw-bold">النوع </label>
+          <div class="col-12">
+            <select [(ngModel)]="orderObject.orderType" id="item" name="orderType" id="orderType" class="form-select">
+              <option value="Delivery">خارجي </option>
+              <option value="Restaurant"> داخلي</option>
+              <!-- <option value="female"> عن طريق الموقع</option> -->
+            </select>
+          </div>
+        </div>
+        <div class="form-group me-3 col-4">
+          <label for="order_date" class="col-6 mb-2 ms-1 control-label fs-6 fw-bold">التاريخ</label>
+          <div class="col-11">
+            <input type="date" id="order_date" name="order_date" class="form-control"
+              [(ngModel)]="orderObject.order_date" />
+          </div>
+          <div class="col-sm-7"></div>
+        </div>
+
+        <div class="form-group col-5">
+          <label for="notes" class="col-12 mb-2 ms-1 control-label fs-6 fw-bold">ملاحظات</label>
+          <div class="col-12">
+            <textarea type="text" #notes="ngModel" [class.is-invalid]="notes.touched&&notes.invalid" id="notes"
+              maxlength="100" style="resize: none;" name="notes" class="form-control"
+              [(ngModel)]="orderObject.notes"></textarea>
+          </div>
+          <div class="col-sm-7"></div>
+        </div>
+      </div>
+
+      <div class=" d-flex flex-row justify-content-center align-items-center mt-1">
+        <div class="form-group col-4 ms-3">
+          <label for="item" class="col-12 control-label fs-6 fw-bold"> مجموعات الاصناف</label>
+          <div class="col-12">
+            <select [(ngModel)]="filterProduct" #filter (change)="getProductForCat()" id="category" name="category"
+              class="form-select">
+              <option *ngFor="let category of CategoryLst;" [value]="category.id">{{category.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-4 me-1 ms-3 me-3">
+          <label for="item" class="col-12 control-label fs-6 fw-bold">اسم المنتج</label>
+          <div class="col-12">
+            <select [(ngModel)]="pro_id" (change)="getProductForCat()" name="product" id="product" class="form-select">
+              <option>اختار الوجبة</option>
+              <option *ngFor="let product of ProductLst|catProductFilter:filterProduct" [value]="product.product_id">
+                {{product.product_name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-3 ms-1">
+          <label for="quantityMeal" class="col-12 control-label fs-6 fw-bold">العدد</label>
+          <div class="col-12">
+            <input type="number" min="1" id="quantityMeal" name="quantityMeal" [(ngModel)]="quantity_meal"
+              class="form-control" />
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="w-100 text-center"> <button style="width:20%" type="button" class="btn btn-primary mt-1"
+          (click)="AddDetailsOrder()" [disabled]="orderForm.form.invalid">اضافه
+        </button></div>
+
+
+
+      <br>
+      <table class="w-100 card" class="table table-bordered  rounded text-center">
+        <tr style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;" class="text-center">
+          <th>#</th>
+          <th>الصنف</th>
+          <th>الكميه</th>
+          <th>السعر</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let item of orderObject.orderDetailsModels;index as i">
+          <td>{{i+1}}</td>
+          <td>{{item.product_name}}</td>
+          <td>{{item.quantityMeal}}</td>
+          <td>{{item.priceMeal}}</td>
+          <td>
+            <button style="border:none;" (click)="RemoveItem(item)"><i class="bi bi-trash-fill"></i></button>
+          </td>
+        </tr>
+      </table>
+
+      <div class="card p-2 d-flex flex-row justify-content-center align-items-center">
+        <label for="Q" class=" control-label  fs-6 fw-bold ms-2">اجمالي الطلب</label>
+        <input type="number" min="0" id="total" name="total" class="text-center rounded "
+          [(ngModel)]="orderObject.totalPrice" />
+        <div class="d-flex flex-row justify-content-center align-items-center w-50">
+          <input type="button" style="width: 30% ;margin-right:10%;" type="button" class="btn btn-primary w-50 "
+            [value]="typeOperation" (click)="addOrder(orderForm)" [disabled]="orderForm.form.invalid ">
+          <!-- (click)="addOrder()" -->
+          <button style="width: 15% ;margin-right:1%;" type="button" (click)="onNoClick()"
+            class="w-50 btn btn-danger  ">إغلاق
+          </button>
+        </div>
+      </div>
+    </form>
+
   </div>
+</div>
+
+<!-- <button (click)="signalrfunc()">send signalr</button> -->

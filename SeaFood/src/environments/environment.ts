@@ -3,8 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseApi:'https://fakestoreapi.com/',
-  production: false
+  production: false,
+  urlApi:"http://localhost:24637/api",
+  ApiUrl:"http://localhost:24637/api",
+  baseApi:"http://localhost:24637/api",
+  
+  // baseApi:'https://fakestoreapi.com/',
+
 };
 
 /*

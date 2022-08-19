@@ -1,132 +1,102 @@
-<!-- <div style="height:70% ;">
-<h1 class="text-center" mat-dialog-title>تعديل</h1>
-<div mat-dialog-content>
-
-    <mat-form-field appearance="fill"> -->
-        <!-- <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.animal"> -->
-
-        <!-- <div class="mb-3 col-12">
-            <mat-label class="col-form-label">اسم الصنف</mat-label>
-            <label for="recipient-name" class="col-form-label">اسم الصنف</label>
-            <select class="form-control form-select" [value]="data.item">
-                <option [selected]>{{data.item}}</option>
-                <option>item1</option>
-                <option>item1</option>
-                <option>item1</option>
-                <option>item1</option>
-            </select>
-        </div> -->
-
-<div >
-    <div class="d-flex">
-        <p style="margin-right:30%;" class="text-center text-primary fs-4">إضافه مشتريات</p>
-       <button style="margin-right:35%;" (click)="onNoClick()" type="button" class="btn-close  " aria-label="Close"></button>
-     </div>
-<form style="margin-right:4% ;" class="form-horizontal col-12"
- #purshasepost="ngForm">
- 
-      <div class="d-flex flex-row"> 
-        <div class="form-group col-sm-6">
-          <label for="dob" class="col-sm-3 control-label fs-6 fw-bold">التاريخ</label>
-          <div class="col-sm-10">
-              <input type="date" id="dob" class="form-control" ngModel />
-          </div>
-          <div class="col-sm-7"></div>
-      </div>
-      <div class="form-group col-6">
-        <label for="item" class="col-sm-6 control-label fs-6 fw-bold"> الصنف</label>
-        <div class="col-sm-10">
-            <select  id="item" class="form-select"  ngModel>
-                <option value="male">سمك بوري </option>
-                <option value="female">سمك بلطي </option>
-            </select>
+<div class="card p-2" >
+    <div class=" d-flex flex-row justify-content-center align-items-center">
+        <div class="col-4"></div>
+        <p class="col-4 text-center text-primary fs-4">{{TitlePurchases}}</p>
+        <div class="col-4 " style="text-align: left;">
+            <button (click)="onNoClick()" type="button" class="btn-close col-12  " aria-label="Close"></button>
         </div>
     </div>
-       
-    </div>
-    <div class="d-flex flex-row"> 
- 
-        <div class="form-group col-sm-6 mt-1">
-            <label for="Q" class="col-sm-6 control-label fs-6 fw-bold">الكميه بالكيلو</label>
-            <div class="col-sm-10">
-                <input type="number" min="0" id="Q" class="form-control"  ngModel />
-            </div> 
+
+    <form #purchasesForm="ngForm" name="form"  novalidate   class="form-horizontal col-12" role="form"> 
+
+        <div class="d-flex flex-row justify-content-center align-items-center p-2">
+            <div class="form-group col-sm-5 ms-4">
+                <label for="dob" class="col-sm-12 control-label fs-6 fw-bold">التاريخ</label>
+                <div class="col-sm-12">
+                    <input type="datetime-local" #datePur="ngModel" required [class.is-invalid]="datePur.touched&&datePur.isvalid" name="dob" [(ngModel)]="PurchasesObject.bill_date" id="dob" class="form-control" ngModel />
+                </div>
             </div>
-
-    <div class="form-group col-sm-6 mt-1">
-      <label for="Q" class="col-sm-3 control-label fs-6 fw-bold"> السعر</label>
-      <div class="col-sm-10">
-          <input  type="number" min="0" id="Q" class="form-control"  ngModel  />
-      </div> 
-      </div>
-      </div>
-
-      <div class="d-flex flex-row"> 
-
-        <div class="form-group col-sm-6 mt-1">
-            <label for="Q" class="col-sm-6 control-label fs-6 fw-bold"> الوصف</label>
-            <div class="col-sm-10">
-                <input type="text" id="Q" class="form-control"  ngModel />
-            </div> 
+            <div class="form-group col-sm-6">
+                <label for="itemvalue" class="col-12 control-label fs-6 fw-bold">الصنف</label>
+                <div class="col-12">
+                    <select [(ngModel)]="itemId"  id="itemvalue"
+                        name="itemvalue" class="form-select">
+                        <option *ngFor="let item of ItemsLst;" [value]="item.id">{{item.name}} 
+                        </option>
+                    </select>
+                </div>
             </div>
-
-    <div class="form-group col-sm-6 mt-1">
-        <div mat-dialog-actions>
-            <br>
-            <button style="margin-right:60% ;width:30%;"
-             mat-button class="btn btn-primary"  cdkFocusInitial>إضافه</button>
         </div>
-      </div>
-      </div>
+
+        <div class="d-flex flex-row justify-content-center align-items-center p-2">
+            <div class="form-group col-sm-5 ms-4">
+                <label for="PurchasesDetailsQuantity" class="col-sm-12 control-label fs-6 fw-bold">الكميه بالكيلو</label>
+                <div class="col-sm-12">
+                    <input type="number" name="PurchasesDetailsQuantity" min="1" id="PurchasesDetailsQuantity" 
+                    [(ngModel)]="PurchasesDetailsQuantity" class="form-control" ngModel 
+                    #quantityPur="ngModel" required [class.is-invalid]="quantityPur.touched&&quantityPur.isvalid"/>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="PurchasesDetailsPrice" class="col-sm-12 control-label fs-6 fw-bold"> سعر الكمية</label>
+                <div class="col-sm-12">
+                    <input type="number" min="0" id="PurchasesDetailsPrice" name="PurchasesDetailsPrice" class="form-control" ngModel 
+                    [(ngModel)]="PurchasesDetailsPrice"
+                    #pricePur="ngModel" required [class.is-invalid]="pricePur.touched&&pricePur.invalid"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center align-items-center mb-1">
+            <div class="form-group col-sm-5 ms-4">
+                <label for="vendorName" class="col-sm-12 control-label fs-6 fw-bold"> البائع</label>
+                <div class="col-sm-12">
+                    <input type="text" id="vendorName" name="vendorName" [(ngModel)]="PurchasesObject.vendorName" class="form-control" ngModel 
+                    #vendorPur="ngModel" required [class.is-invalid]="vendorPur.touched&&vendorPur.invalid" />
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <div mat-dialog-actions>
+                    <br>
+                    <button  mat-button class="btn btn-primary col-12"
+                         (click)="addItemsInBill()" [disabled]="purchasesForm.form.invalid">إضافه</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-around align-items-center mt-2">
+            <input style="width: 25%;" (click)="addBill(purchasesForm)" type="button" class="btn btn-primary" [value]="typeOperation" [disabled]="purchasesForm.form.invalid">
+            <button style="width: 25%;" type="button" (click)="onNoClick()"
+                class="btn btn-danger  ">إغلاق
+            </button>
+        </div>
     </form>
-  </div>
+</div>
 
-    <br>
-    <table style="width:90% ;margin-right: 5%;" class="table table-bordered  rounded text-center">
-        <tr  style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;"class="text-center">
-            <th>التاريخ</th>
-            <th>الصنف</th>
-            <th>الكميه</th>
-            <th>السعر</th>
-            <th>الاجمالي</th>
-          
-            <th></th>
-        </tr>
-        
-        <tr >
-            <td>4/8/2022</td>
-            <td>سمك بوري</td>
-            <td>2</td>
-            <td>100</td>
-            <td>200</td>
-           
-            <td>
-                <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
-            </td>
-        </tr>
-        <tr >
-            <td>4/8/2022</td>
-            <td> ارز</td>
-            <td>5</td>
-            <td>12</td>
-            <td>60</td>
-           
-           
-            <td>
-                           
-             <button style="border:none;"><i class="bi bi-trash-fill"></i></button>
-              </td>
-          </tr>
-      </table> 
- 
-      <div class="d-flex" >
-        <label for="Q" class=" col-sm-3 control-label fs-6 fw-bold">اجمالي الفاتوره</label>
-        <input type="number" min="0" readonly id="Q" class=" col-sm-3 text-center rounded" value="195" />
-       <button style="width: 25% ;margin-right:10%;" type="button" class="btn btn-primary  ">حفظ 
-        </button>
-        <button style="width: 25% ;margin-right:1%;" type="button" (click)="onNoClick()" class="btn btn-danger  ">إغلاق 
-        </button>
-      </div>
-          
+<br>
+<table class="w-100 table table-bordered  rounded text-center">
+    <tr style="background-color:#0473b9 ; color:white;height:30px;font-size: 15px;" class="text-center">
+        <th>#</th>
+        <th>الصنف</th>
+        <th>الكميه</th>
+        <th>السعر</th>
+        <th></th>
+    </tr>
 
+    <tr  *ngFor="let details of PurchasesObject.purchasesSalesDetailsModels;index as i">
+        <td>{{i+1}}</td>
+        <td>{{details.item_name}}</td>
+        <td>{{details.quantity}}</td>
+        <td>{{details.price | currency}}</td>
+        <td>
+            <button style="border:none;" (click)="RemoveItemsFromBill(details)"><i class="bi bi-trash-fill"></i></button>
+        </td>
+    </tr>
+   
+</table>
+
+<div class=" d-flex flex-row justify-content-between align-items-center ">
+    <label for="totalPrice" class=" col-sm-3 control-label fs-6 fw-bold">اجمالي الفاتوره</label>
+    <input type="number" style="border: none;outline: 2px solid lightgray;" min="0" readonly id="totalPrice"
+        class=" col-sm-3 text-center rounded p-2"  name="totalPrice" [(ngModel)]="PurchasesObject.totalPrice"/>
+</div>
