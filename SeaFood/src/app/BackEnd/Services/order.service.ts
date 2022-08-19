@@ -1,9 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { interval, of, throwError } from 'rxjs';
 import { catchError, map, mergeMap, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { GlobalVariable } from '../Global/global-variable';
 import { ICategory } from '../ViewModels/icategory';
 import { IOrderDetails } from '../ViewModels/iorder-details';
 import { IOrderModel } from '../ViewModels/iorder-model';
@@ -26,13 +28,10 @@ export class OrderService {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router:Router) { }
 
 
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Accept': `*/*`
-  });
+  headers = GlobalVariable.headerWithAuth();
 
   options = { headers: this.headers }
 
@@ -85,10 +84,10 @@ export class OrderService {
       return throwError(error.message);
     }));
   }
-  getAllOrder(): Observable<IOrderModel[]> {
+  GetAllOrderNotOnlineInDay(): Observable<IOrderModel[]> {
     //http://localhost:24637/api/Orders
 
-    return this.http.get<IOrderModel[]>(`${environment.urlApi}/Orders`).pipe(catchError((error) => {
+    return this.http.get<IOrderModel[]>(`${environment.urlApi}/Orders/GetAllOrderNotOnlineInDay`,this.options).pipe(catchError((error) => {
       return throwError(error.message);
     }));
   }
