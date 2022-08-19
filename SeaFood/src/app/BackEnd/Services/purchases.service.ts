@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { GlobalVariable } from '../Global/global-variable';
 import { Items } from '../ViewModels/items';
 import { PurchasesDetailsModel } from '../ViewModels/purchases-details-model';
 import { PurchasesModel } from '../ViewModels/purchases-model';
@@ -23,11 +24,7 @@ export class PurchasesService {
 
   constructor(private http: HttpClient) { }
 
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Accept': `*/*`
-  });
-
+  headers = GlobalVariable.headerWithAuth();
   options = { headers: this.headers }
 
 

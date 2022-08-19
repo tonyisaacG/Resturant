@@ -4,12 +4,12 @@
 
     <div class="signin-signup">
 
-      <form class="sign-in-form" [formGroup]="UserLogForm" (ngSubmit)="LoginUser(UserLogForm)">
+
+      <form class="sign-in-form" [formGroup]="UserLogForm" (ngSubmit)="LoginUser()">
         <h2 class="title">Sign in</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username"  required  formControlName="username"
-            name="userNameSignIn" />
+          <input type="text" placeholder="Username" id="username"  formControlName="username" name="username" />
         </div>
         <div
           *ngIf="UserLogForm.controls['username'].invalid && (UserLogForm.controls['username'].dirty || UserLogForm.controls['username'].touched)"
@@ -21,14 +21,10 @@
             invlaid syntax
           </small>
         </div>
-
-
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
-            formControlName="password" name="passwordSignIn" />
+          <input type="password" placeholder="Password" id="password"  formControlName="password" name="password" />
         </div>
-
         <div
           *ngIf="UserLogForm.controls['password'].invalid && (UserLogForm.controls['password'].dirty || UserLogForm.controls['password'].touched)"
           class="alert text-danger h2 w-100 text-center">
@@ -39,15 +35,13 @@
             password must be complex
           </small>
         </div>
-
         <input type="submit" value="Login" [disabled]="UserLogForm.invalid" class="btn solid" />
       </form>
 
 
 
 
-
-
+<!-- 
       <form [formGroup]="UserRegForm" class="sign-up-form">
         <h2 class="title">Sign up</h2>
         <div class="input-field">
@@ -63,7 +57,7 @@
           <input type="password" placeholder="Password" />
         </div>
         <input type="submit" class="btn" value="Sign up" />
-      </form>
+      </form> -->
     </div>
   </div>
 

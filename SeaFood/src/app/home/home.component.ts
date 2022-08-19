@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
   //#region 
 
   getAllOrder() {
-    this.orderServices.getAllOrder().subscribe((data) => {
+    this.orderServices.GetAllOrderNotOnlineInDay().subscribe((data) => {
       console.log(data);
       this.OrderLst = data;
     });
