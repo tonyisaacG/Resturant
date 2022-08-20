@@ -28,6 +28,7 @@ import { UserPageComponent } from './LazyLoading/user-page/user-page.component';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { CartsModule } from '../app/carts/carts/carts.module';
 
+
 //=======
 //import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //=======
@@ -65,7 +66,8 @@ import { CartsModule } from '../app/carts/carts/carts.module';
     HttpClientModule,
     SharedModule,
     ProductsModule,
-    CartsModule
+    CartsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -25,12 +25,12 @@ import { AuthUserGuard } from './BackEnd/AuthGuard/auth-user.guard';
 
 //canLoad:[AuthUserGuard]
 const routes: Routes = [
-  { path: "admin", loadChildren: () => import('../app/LazyLoading/admin-module/admin-module.module').then(a => a.AdminModuleModule),},
+  { path: "admin", loadChildren: () => import('../app/LazyLoading/admin-module/admin-module.module').then(a => a.AdminModuleModule),canLoad:[AuthUserGuard]},
   {
     path: 'user', component: UserPageComponent, children: [
       { path: "home", component: LandingpageComponent },
       { path: "cart", component: CartComponent},
-      { path: "personalData", component: PersonalDataComponent,},  // canActivate:[OrderOkActivateGuard]
+      { path: "personalData", component: PersonalDataComponent, canActivate:[OrderOkActivateGuard]},
       { path: "products", component: AllProductComponent },
       { path: "products/:id", component: ProductDetailsComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },

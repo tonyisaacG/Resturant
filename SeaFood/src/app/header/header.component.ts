@@ -24,11 +24,7 @@ export class HeaderComponent implements OnInit {
 
     //#region  properties
     username :string  = 'مستخدم غير معلوم';
-<<<<<<< HEAD
     notification:string=`green`;
-=======
-    notification:string=`white`;
->>>>>>> 90e7b496661cc9ec01438c61b2621c70bc1e2fa9
     //#endregion
 
   
@@ -45,22 +41,10 @@ export class HeaderComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-<<<<<<< HEAD
 
     this.jwtParser.setToken(localStorage.getItem("AuthUserToken"));
     this.jwtParser.decodeToken();
     this.username = this.jwtParser.getUsername();
-=======
-    this.jwtParser.setToken(localStorage.getItem("AuthUserToken"));
-    this.jwtParser.decodeToken();
-    this.username = this.jwtParser.getUsername();
-    this.signalr.startConnection();
-    this.signalr.data.subscribe(data=>{
-      if(data!=null){
-        this.notification=`red`;
-      }
-    })
->>>>>>> 90e7b496661cc9ec01438c61b2621c70bc1e2fa9
   }
 
   toggleSidebar() {
