@@ -66,6 +66,7 @@ export class ConsumptionComponent implements OnInit {
 
 
   deleteOneConsumInD(id:number){
+    if (confirm("هل تريد حذف هذه الفاتوره بالفعل؟؟"))
     this.consumServices.deleteOneConsum(id).subscribe(()=>{
       this.ConsumLst=this.ConsumLst.filter(cl=>cl.bill_id !=id);
     },

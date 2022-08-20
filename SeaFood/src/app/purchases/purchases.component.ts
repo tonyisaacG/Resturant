@@ -69,6 +69,7 @@ export class PurchasesComponent implements OnInit {
 
 
   deleteOnePurchasesInD(id: number) {
+    if (confirm("هل تريد حذف هذه الفاتوره بالفعل؟؟"))
     this.PurchasesServices.deleteOnePurchases(id).subscribe(() => {
       this.PurchasesLst = this.PurchasesLst.filter(cl => cl.bill_id != id);
     },

@@ -26,12 +26,12 @@ import { environment } from 'src/environments/environment';
   product: any;
   inputProduct: Products = new Products();
   data: any;
-  uploadform: FormGroup;
+  updateform: FormGroup;
   @Input()
   updateproduct: Products =new Products();
   @Output()  updatep: EventEmitter<Products[]> = new EventEmitter();
   prod: Products = new Products();
-  
+  mess=false;
   constructor(public dialogRef: MatDialogRef<UpdateproductmodalComponent>, private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public Data: any, private categoryservices: CategoryservicesService,
     private formBuilder: FormBuilder, private productservices: ProductservicesService) {
@@ -42,7 +42,7 @@ import { environment } from 'src/environments/environment';
   }
 
   ngOnInit(): void {
-    this.uploadform = this.formBuilder.group({
+    this.updateform = this.formBuilder.group({
       product_name: [''],
       product_price: [''],
       product_description: [''],
@@ -57,7 +57,7 @@ import { environment } from 'src/environments/environment';
   }
 
   ngOnChanges():void{
-    this.uploadform = this.formBuilder.group({
+    this.updateform = this.formBuilder.group({
       product_name: [this.updateproduct.product_name],
       product_price: [this.updateproduct.product_price],
       product_description: [this.updateproduct.product_description],
@@ -77,16 +77,16 @@ import { environment } from 'src/environments/environment';
     formdata: any = new FormData();
     onSubmit() {
     console.log("test");
-    this.updateproduct.product_name = this.uploadform.get('product_name').value==''?this.updateproduct.product_name:this.uploadform.get('product_name').value;
-    this.updateproduct.product_price = this.uploadform.get('product_price').value==''?this.updateproduct.product_price:this.uploadform.get('product_price').value;
-    this.updateproduct.product_description = this.uploadform.get('product_description').value==''?this.updateproduct.product_description:this.uploadform.get('product_description').value;
+    this.updateproduct.product_name = this.updateform.get('product_name').value==''?this.updateproduct.product_name:this.updateform.get('product_name').value;
+    this.updateproduct.product_price = this.updateform.get('product_price').value==''?this.updateproduct.product_price:this.updateform.get('product_price').value;
+    this.updateproduct.product_description = this.updateform.get('product_description').value==''?this.updateproduct.product_description:this.updateform.get('product_description').value;
     // this.inputProduct.cat_name=this.uploadform.get('cat_name')?.value;
      //this.inputProduct.cat_id=this.uploadform.get('cat_id')?.value;
-     this.inputProduct.product_imagePath=this.uploadform.get('product_imagePath')?.value;
+     this.inputProduct.product_imagePath=this.updateform.get('product_imagePath')?.value;
 
-    this.productservices.updateproducts(this.updateproduct).subscribe(c => { console.log(this.uploadform); });
+    this.productservices.updateproducts(this.updateproduct).subscribe(c => { console.log(this.updateform); });
     //  this.productservices.addproduct(this.formdata).subscribe(c => { console.log(this.uploadform); });
-
+ this.mess=true;
   } 
   uploadFile(event: any) {
     if (!event.target.files[0] || event.target.files[0].length == 0) {
@@ -109,7 +109,10 @@ import { environment } from 'src/environments/environment';
 
 
   }
-  
+  removemessage() {
+    this.mess = false;
+    
+  }
 
 }
 

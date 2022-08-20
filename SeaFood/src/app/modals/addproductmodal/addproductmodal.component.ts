@@ -98,5 +98,20 @@ export class AddproductmodalComponent implements OnInit {
 
 
   }
- 
+
+  keyPress(event: any) {
+    const pattern = /^[\u0621-\u064A\a-zA-Z \-\']+$/;
+    let inputChar = String.fromCharCode(event.charCode);
+       if (!pattern.test(inputChar)) {
+           event.preventDefault();
+      }
+    }
+
+    phkeyPress(event: any) {
+      const pattern = /[0-9\+\-\ ]/;
+      let inputChar = String.fromCharCode(event.charCode);
+      if (!pattern.test(inputChar)) {
+             event.preventDefault();
+        }
+   }
 }
