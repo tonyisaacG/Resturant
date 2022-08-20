@@ -47,7 +47,7 @@ export class AddproductmodalComponent implements OnInit {
         product_description: [''],
         cat_name: [''],
         id: [''],
-        product_imagepath: ['']
+        product_imagePath: ['']
       })
   
     
