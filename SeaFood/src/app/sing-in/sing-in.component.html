@@ -5,37 +5,37 @@
     <div class="signin-signup">
 
 
-      <form class="sign-in-form" [formGroup]="UserLogForm" (ngSubmit)="LoginUser()">
-        <h2 class="title">Sign in</h2>
+      <form  dir="rtl" class="sign-in-form" [formGroup]="UserLogForm" (ngSubmit)="LoginUser()">
+        <h2 class="title fs-2 fw-bold">تسجيل الدخول</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" id="username"  formControlName="username" name="username" />
+          <input type="text" class="fs-3 " placeholder="اسم المستخدم" id="username"  formControlName="username" name="username" />
         </div>
         <div
           *ngIf="UserLogForm.controls['username'].invalid && (UserLogForm.controls['username'].dirty || UserLogForm.controls['username'].touched)"
           class="alert text-danger h2 w-100 text-center">
           <small *ngIf="UserLogForm.controls['username'].errors.required">
-            Name is required.
+            اسم المستخدم مطلوب
           </small>
           <small *ngIf="UserLogForm.controls['username'].errors.pattern">
-            invlaid syntax
+            اسم المستخدم غير صالح
           </small>
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" id="password"  formControlName="password" name="password" />
+          <input type="password" class="fs-3 " placeholder="الرقم السرى" id="password"  formControlName="password" name="password" />
         </div>
         <div
           *ngIf="UserLogForm.controls['password'].invalid && (UserLogForm.controls['password'].dirty || UserLogForm.controls['password'].touched)"
           class="alert text-danger h2 w-100 text-center">
           <small *ngIf="UserLogForm.controls['password'].errors.required">
-            password is required.
+            الرقم السرى مطلوب
           </small>
           <small *ngIf="UserLogForm.controls['password'].errors.pattern">
-            password must be complex
+            الرقم السرى غير صالح 
           </small>
         </div>
-        <input type="submit" value="Login" [disabled]="UserLogForm.invalid" class="btn solid" />
+        <input type="submit"  value="تسجيل" [disabled]="UserLogForm.invalid" class="btn solid fs-4 fw-bold" />
       </form>
 
 
@@ -64,14 +64,13 @@
   <div class="panels-container">
     <div class="panel left-panel">
       <div class="content">
-        <h3>New here ?</h3>
+        <h3></h3>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-          ex ratione. Aliquid!
+         
         </p>
-        <button class="btn transparent" id="sign-up-btn" (click)="ToggleSingnInAndSignUp()">
+        <!-- <button class="btn transparent" id="sign-up-btn" (click)="ToggleSingnInAndSignUp()">
           Sign up
-        </button>
+        </button> -->
       </div>
       <img src="../../assets/log.svg" class="image" alt="" />
     </div>
