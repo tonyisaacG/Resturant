@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
     //#region  properties
     username :string  = 'مستخدم غير معلوم';
-    notification:string=`green`;
+    // notification:string=`green`;
     //#endregion
 
   
