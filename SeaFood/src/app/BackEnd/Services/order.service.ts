@@ -75,12 +75,12 @@ export class OrderService {
     }));
   }
   getCategory(): Observable<ICategory[]> {
-    return this.http.get<ICategory[]>(`${environment.urlApi}/Categories`).pipe(catchError((error) => {
+    return this.http.get<ICategory[]>(`${environment.urlApi}/Categories`,this.options).pipe(catchError((error) => {
       return throwError(error.message);
     }));
   }
   getProduct(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${environment.urlApi}/Products`).pipe(catchError((error) => {
+    return this.http.get<IProduct[]>(`${environment.urlApi}/Products`,this.options).pipe(catchError((error) => {
       return throwError(error.message);
     }));
   }

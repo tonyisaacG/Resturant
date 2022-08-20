@@ -46,7 +46,7 @@ export class PurchasesService {
   }
 
   removeDetailsBill(idBill:number,idItem:number){
-    return this.http.delete(`${environment.urlApi}/PurchasesSales/DeleteBillDetails/${idBill}/${idItem}`, {responseType: 'text'}).pipe(catchError((error)=>{
+    return this.http.delete(`${environment.urlApi}/PurchasesSales/DeleteBillDetails/${idBill}/${idItem}`, this.options).pipe(catchError((error)=>{
       return throwError(error.message);
     }));
   }
@@ -67,7 +67,7 @@ export class PurchasesService {
   }
 
   deleteOnePurchases(id:number){
-    return this.http.delete(`${environment.urlApi}/PurchasesSales/${id}`,{responseType:'text'}).pipe(catchError(error=>{
+    return this.http.delete(`${environment.urlApi}/PurchasesSales/${id}`,this.options).pipe(catchError(error=>{
       return throwError(error);
     }));
   }

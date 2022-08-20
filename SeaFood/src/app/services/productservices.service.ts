@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Products } from '../models/products';
 import { catchError } from 'rxjs/operators';
+import { GlobalVariable } from '../BackEnd/Global/global-variable';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ import { catchError } from 'rxjs/operators';
 export class ProductservicesService {
   private url="Products";
  
+  headers = GlobalVariable.headerWithAuth();
+
+  options = { headers: this.headers }
+  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -20,13 +25,13 @@ export class ProductservicesService {
     constructor(private httpClient: HttpClient) { }
   
     getAllproducts(): Observable<Products[]> {
-      return this.httpClient.get<Products[]>(`${environment.ApiUrl}/${this.url}`)
+      return this.httpClient.get<Products[]>(`${environment.ApiUrl}/${this.url}`,this.options)
       .pipe(catchError(this.errorHandler)
       )
     }
   
     getById(id): Observable<Products> {
-      return this.httpClient.get<Products>(`${environment.ApiUrl}/${this.url}/${id}`)
+      return this.httpClient.get<Products>(`${environment.ApiUrl}/${this.url}/${id}`,this.options)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -42,7 +47,7 @@ export class ProductservicesService {
       formdata.append('cat_id', inputProduct.cat_id);
       formdata.append('cat_name', inputProduct.cat_name);
       return this.httpClient.post<any>(`${environment.ApiUrl}/${this.url}`,
-      formdata)
+      formdata,this.options)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -56,11 +61,11 @@ export class ProductservicesService {
     // }
   
     public updateproducts(product:Products):Observable<Products>{
-      return this. httpClient.put<Products>(`${environment.ApiUrl}/${this.url}/${product.product_id}`,product,this.httpOptions)
+      return this. httpClient.put<Products>(`${environment.ApiUrl}/${this.url}/${product.product_id}`,product,this.options)//,this.httpOptions)
       }
   
     deleteproducts(id){
-      return this.httpClient.delete<Products>(`${environment.ApiUrl}/${this.url}/${id}`, this.httpOptions)
+      return this.httpClient.delete<Products>(`${environment.ApiUrl}/${this.url}/${id}`,this.options)//, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )

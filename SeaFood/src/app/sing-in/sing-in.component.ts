@@ -12,7 +12,7 @@ import { SignInUpService } from '../BackEnd/Services/sign-in-up.service';
 })
 export class SingInComponent implements OnInit {
 
-  UserRegForm?: FormGroup;
+  // UserRegForm?: FormGroup;
   UserLogForm?: FormGroup;
 
   isOpen: Boolean = false
@@ -35,8 +35,8 @@ export class SingInComponent implements OnInit {
     // });
 
     this.UserLogForm = this.loginfrm.group({
-      "username": ['', [Validators.required, Validators.minLength(6)]],
-      "password": ['', [Validators.required, Validators.pattern("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$")]]
+      "username": ['', [Validators.required]],
+      "password": ['', [Validators.required, Validators.pattern("^.{6,}$")]]
     });
   }
 
@@ -58,15 +58,7 @@ export class SingInComponent implements OnInit {
 
   LoginUser() {
     this.signInUp.Login(this.UserLogForm.value).subscribe((data: any) => {
-      console.log(data.id);
-      console.log(data.username);
       this.jwtParser.setToken(data);
-      console.log(this.jwtParser.getDecodeToken());
-      console.log(this.jwtParser.getUserId())
-      console.log(this.jwtParser.getUsername())
-      console.log(this.jwtParser.getUserRole())
-      console.log(this.jwtParser.getExpiryTime())
-      console.log(this.jwtParser.isTokenExpired())
       this.auth.Login(data);
       this.router.navigate(['admin']);
     }, (error) => {

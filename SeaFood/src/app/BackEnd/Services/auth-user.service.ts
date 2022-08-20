@@ -19,7 +19,6 @@ export class AuthUserService {
   }
   IsLoggin() {
     if (localStorage.getItem("AuthUserToken") !=null) {
-      console.log(this.jwtParser.isTokenExpired())
       return true;
     }
     else {

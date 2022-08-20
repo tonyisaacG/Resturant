@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { GlobalVariable } from '../BackEnd/Global/global-variable';
 import { category } from '../models/category';
 
 @Injectable({
@@ -9,6 +10,11 @@ import { category } from '../models/category';
 })
 export class CategoryservicesService {
   
+
+  headers = GlobalVariable.headerWithAuth();
+
+  options = { headers: this.headers }
+
 private url="Categories";
 
 httpOptions = {
@@ -27,17 +33,17 @@ httpOptions = {
 //  return[cat];}
 
 public getallcategories():Observable<category[]>{
-return this.http.get<category[]>(`${environment.ApiUrl}/${this.url}`);
+return this.http.get<category[]>(`${environment.ApiUrl}/${this.url}`,this.options);
 
 }
 
 public getcategory(id:number):Observable<category>{
   //console.log(`${environment.ApiUrl}/${this.url}/${id}`)
-  return this.http.get<category>(`${environment.ApiUrl}/${this.url}/${id}`);
+  return this.http.get<category>(`${environment.ApiUrl}/${this.url}/${id}`,this.options);
   }
 
 public updatecategory(categoryin:category):Observable<category[]>{
-  return this.http.put<category[]>(`${environment.ApiUrl}/${this.url}/${categoryin.id}`,categoryin)
+  return this.http.put<category[]>(`${environment.ApiUrl}/${this.url}/${categoryin.id}`,categoryin,this.options)
   }
 
 
@@ -45,7 +51,7 @@ public updatecategory(categoryin:category):Observable<category[]>{
     const headers={'content-type':'application/json'}
     console.log (categoryin);
     return this.http.post<category[]>(`${environment.ApiUrl}/${this.url}`,
-    categoryin,{'headers':headers})
+    categoryin,this.options)
     }
 
   // Addcategory(data:any):Observable<any>{
@@ -58,7 +64,7 @@ public updatecategory(categoryin:category):Observable<category[]>{
   // }
 
     public Deletecategory(id:number):Observable<category[]>{
-      return this.http.delete<category[]>(`${environment.ApiUrl}/${this.url}/${id}`);
+      return this.http.delete<category[]>(`${environment.ApiUrl}/${this.url}/${id}`,this.options);
       }
 
   }

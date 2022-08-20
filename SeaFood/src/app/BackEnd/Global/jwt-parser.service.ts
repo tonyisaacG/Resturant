@@ -46,8 +46,7 @@ export class JwtParserService {
     isTokenExpired(): boolean {
       let expiryTime= Number(this.getExpiryTime());
       if (expiryTime) {
-        console.log(((1000 * expiryTime) > (new Date()).getTime()))
-        return ((1000 * expiryTime) > (new Date()).getTime());
+        return ((expiryTime) > (new Date()).getTime());
       } else {
         return false;
       }

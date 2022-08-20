@@ -14,6 +14,7 @@ export class SignalRService {
     private hubConnection!: signalR.HubConnection;
     public successSend:boolean=false;
     public successRecive:boolean=false;
+    public notification = false;
     
 
     constructor() {
@@ -61,7 +62,7 @@ export class SignalRService {
         });
         this.hubConnection.on('ReceiveOrder', (order:IOrderModel) => {
             
-                this.successRecive = true
+                this.notification = true;
                 this.data.next(order);
         });
     }
