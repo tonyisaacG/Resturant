@@ -5,7 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SelectComponent } from './components/select/select.component';
-
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, LandingpageComponent, SpinnerComponent, SelectComponent],
   imports: [
@@ -16,7 +16,9 @@ import { SelectComponent } from './components/select/select.component';
     FooterComponent,
     LandingpageComponent,
     SpinnerComponent,
-    SelectComponent
+    SelectComponent,
+    RouterModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
