@@ -262,4 +262,23 @@ export class OrderesmodalComponent implements OnInit {
     console.log(this.pro_id);
   }
   //#endregion
+
+// function to allow number only
+  phkeyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+       if (!pattern.test(inputChar)) {
+           event.preventDefault();
+      }
+ }
+
+
+//function to prevent numbers
+  keyPress(event: any) {
+    const pattern = /^[\u0621-\u064A\a-zA-Z \-\']+$/;
+    let inputChar = String.fromCharCode(event.charCode);
+       if (!pattern.test(inputChar)) {
+           event.preventDefault();
+      }
+ }
 }
