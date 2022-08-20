@@ -115,4 +115,12 @@ export class AddUserComponent implements OnInit {
         window.location.reload();
   }
 
+  keyPress(event: any) {
+    const pattern = /^[\u0621-\u064A\a-zA-Z \-\']+$/;
+    let inputChar = String.fromCharCode(event.charCode);
+       if (!pattern.test(inputChar)) {
+           event.preventDefault();
+      }
+ }
+
 }

@@ -78,7 +78,7 @@ export class AddcategoryComponent implements OnInit {
   }
 
   Deletecategory(id: number) {
-    if (confirm("Delete this category?"))
+    if (confirm("هل تريد حذف هذه المجموعه بالفعل ؟؟"))
       this.categoryservices
         .Deletecategory(id)
         .subscribe(c => { this.getsofcats(); })
@@ -170,4 +170,12 @@ export class AddcategoryComponent implements OnInit {
   // {
   //   this.cattoedit=cat;
   // }
+
+  keyPress(event: any) {
+    const pattern = /^[\u0621-\u064A\a-zA-Z \-\']+$/;
+    let inputChar = String.fromCharCode(event.charCode);
+       if (!pattern.test(inputChar)) {
+           event.preventDefault();
+      }
+ }
 }

@@ -182,14 +182,14 @@ export class AddModalComponent implements OnInit {
         if (ele.item_id.toString() == this.itemId.toString()) {
           ele.quantity += quantity;
           ele.price += price;
-          this.PurchasesObject.totalPrice += price;
+          this.PurchasesObject.totalPrice += price * quantity;
           //  this.PurchasesServices.updateBill(this.PurchasesObject.bill_id, this.PurchasesObject);
           flag = false;
         }
       })
       if (flag) {
         this.PurchasesObject.purchasesSalesDetailsModels.push(newObject);
-        this.PurchasesObject.totalPrice += price;
+        this.PurchasesObject.totalPrice += price * quantity;
 
       }
 
@@ -245,5 +245,13 @@ export class AddModalComponent implements OnInit {
     this.PurchasesServices.sendNewPurchases(bill);
   }
   //#endregion
+
+  keyPress(event: any) {
+    const pattern = /^[\u0621-\u064A\a-zA-Z \-\']+$/;
+    let inputChar = String.fromCharCode(event.charCode);
+       if (!pattern.test(inputChar)) {
+           event.preventDefault();
+      }
+ }
 
 }

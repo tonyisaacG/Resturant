@@ -48,13 +48,12 @@ export class ItemsComponent implements OnInit {
         console.log(res);
         
              this.restform(myform);
-             
-
     },
     err=>{
       console.log(err);
     }
     )
+    window.location.reload();
   }
 
 
@@ -63,13 +62,12 @@ export class ItemsComponent implements OnInit {
     this.serviceItems.updateItemservice().subscribe( 
       res=>{
              this.restform(myform);
-
-             
     },
     err=>{
       console.log(err);
     }
     )
+    window.location.reload();
   }
 
 
@@ -81,30 +79,34 @@ export class ItemsComponent implements OnInit {
    
   updatitem(selcteditem:Items){
     this.serviceItems.ItemsData= Object.assign({},selcteditem) ;
-
+ 
 
   }
 
 
   deletitem(id:number){
     if (confirm('هل انت متاكد من حزف المنتج؟')) {
-      
-    
     this.serviceItems.deletItems(id).subscribe(
       res=>{
                 this.serviceItems.getItems();
     },
     err =>{
       console.log(err);
-
     })
 
   }
   this.ngOnInit();
+  window.location.reload();
 }
 
 
-
+keyPress(event: any) {
+  const pattern = /^[\u0621-\u064A\a-zA-Z \-\']+$/;
+  let inputChar = String.fromCharCode(event.charCode);
+     if (!pattern.test(inputChar)) {
+         event.preventDefault();
+    }
+}
 
 
 
