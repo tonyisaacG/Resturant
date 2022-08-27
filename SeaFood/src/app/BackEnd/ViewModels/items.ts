@@ -8,6 +8,7 @@ export class Items {
         //[Required]
         public expectedQuantityInDay?:number,
         //[StringLength(150), MaxLength(150)]
-        public  description?:string
+        public  description?:string,
+        public totalQuantity?:number,
     ){}
 }

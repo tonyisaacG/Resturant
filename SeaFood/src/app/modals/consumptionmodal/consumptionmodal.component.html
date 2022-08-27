@@ -22,7 +22,7 @@
             <div class="form-group col-sm-6">
                 <label for="itemvalue" class="col-12 control-label fs-6 fw-bold">الاصناف</label>
                 <div class="col-12">
-                    <select [(ngModel)]="itemId"  id="itemvalue"
+                    <select [(ngModel)]="itemId"  id="itemvalue" (change)="selectitem()"
                         name="itemvalue" class="form-select">
                         <option *ngFor="let item of ItemsLst;" [value]="item.id">{{item.name}} 
                         </option>
@@ -37,12 +37,12 @@
                 <label for="quantityitem" class="col-sm-12 control-label fs-6 fw-bold">الكميه بالكيلو</label>
                 <div class="col-sm-12">
                     <input type="number" min="1" oninput="validity.valid||(value='');" id="quantityitem" name="quantityitem" class="form-control" required
-                        [class.is-invalid]="quantityitem.touched&&quantityitem.invalid" #quantityitem="ngModel"
-                        [(ngModel)]="ConsumDetailsQuantity" />
+                        [class.invalid]="quantityitem.touched&&quantityitem.invalid" #quantityitem="ngModel"
+                        [(ngModel)]="ConsumDetailsQuantity"   max="{{maxQuantity}}"/>
                 </div>
             </div>
             <div class="form-group col-sm-6 mt-4">
-                <button style="margin-right: 50%;" type="button" class="btn btn-primary col-sm-6 " (click)="addItemsInBill()">إضافه
+                <button style="margin-right: 50%;" type="button" class="btn btn-primary col-sm-6 " [disabled]="maxQuantity<=0" (click)="addItemsInBill()">إضافه
                 </button>
             </div>
 

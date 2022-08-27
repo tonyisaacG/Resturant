@@ -9,6 +9,11 @@ export class GlobalVariable {
             "Authorization": `Bearer ${localStorage.getItem("AuthUserToken")}`
         });
     }
+    static headerWithAuthNoCT() {
+        return new HttpHeaders({
+            "Authorization": `Bearer ${localStorage.getItem("AuthUserToken")}`
+        });
+    }
     static headerWithNoAuth() {
         return new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',

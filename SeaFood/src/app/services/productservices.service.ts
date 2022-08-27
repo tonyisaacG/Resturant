@@ -12,9 +12,21 @@ import { GlobalVariable } from '../BackEnd/Global/global-variable';
 export class ProductservicesService {
   private url="Products";
  
-  headers = GlobalVariable.headerWithAuth();
 
-  options = { headers: this.headers }
+
+  headersno = GlobalVariable.headerWithNoAuth();
+
+  optionsno = { headers: this.headersno }
+
+  
+  headersWithAuth = GlobalVariable.headerWithAuth();
+
+  optionsWithAuth = { headers: this.headersWithAuth }
+  
+
+  headersWithAuthNoCT = GlobalVariable.headerWithAuthNoCT();
+
+  optionsWithAuthNoCT = { headers: this.headersWithAuthNoCT }
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -25,13 +37,13 @@ export class ProductservicesService {
     constructor(private httpClient: HttpClient) { }
   
     getAllproducts(): Observable<Products[]> {
-      return this.httpClient.get<Products[]>(`${environment.ApiUrl}/${this.url}`,this.options)
+      return this.httpClient.get<Products[]>(`${environment.ApiUrl}/${this.url}`,this.optionsWithAuth)
       .pipe(catchError(this.errorHandler)
       )
     }
   
     getById(id): Observable<Products> {
-      return this.httpClient.get<Products>(`${environment.ApiUrl}/${this.url}/${id}`,this.options)
+      return this.httpClient.get<Products>(`${environment.ApiUrl}/${this.url}/${id}`,this.optionsWithAuth)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -42,12 +54,12 @@ export class ProductservicesService {
       formdata.append('product_name', inputProduct.product_name);
       formdata.append('product_price', inputProduct.product_price);
       formdata.append('product_description', inputProduct.product_description);
-      formdata.append('product_imagePathsrc', inputProduct.product_imagePathsrc);
+      formdata.append('product_imagePathSrc', inputProduct.product_imagePathSrc);
       formdata.append('product_imagePath', inputProduct.product_imagePath);
       formdata.append('cat_id', inputProduct.cat_id);
       formdata.append('cat_name', inputProduct.cat_name);
       return this.httpClient.post<any>(`${environment.ApiUrl}/${this.url}`,
-      formdata,this.options)
+      formdata,this.optionsWithAuthNoCT)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -60,12 +72,25 @@ export class ProductservicesService {
     //   )
     // }
   
-    public updateproducts(product:Products):Observable<Products>{
-      return this. httpClient.put<Products>(`${environment.ApiUrl}/${this.url}/${product.product_id}`,product,this.options)//,this.httpOptions)
+    public updateproducts(product_id,inputProduct:Products,path:string|any):Observable<any>{
+      let formdata=new FormData();
+      formdata.append('product_name', inputProduct.product_name);
+      formdata.append('product_price', inputProduct.product_price);
+      formdata.append('product_description', inputProduct.product_description);
+      formdata.append('product_imagePathSrc', inputProduct.product_imagePathSrc);
+      formdata.append('product_imagePath', path);
+      formdata.append('cat_id', inputProduct.cat_id);
+      formdata.append('cat_name', inputProduct.cat_name);
+      // console.log(inputProduct)
+      
+      
+
+      console.log(JSON.stringify(formdata))
+      return this. httpClient.put<any>(`${environment.ApiUrl}/${this.url}/${product_id}`,formdata,this.optionsWithAuthNoCT)//,this.httpOptions)
       }
   
     deleteproducts(id){
-      return this.httpClient.delete<Products>(`${environment.ApiUrl}/${this.url}/${id}`,this.options)//, this.httpOptions)
+      return this.httpClient.delete<Products>(`${environment.ApiUrl}/${this.url}/${id}`,this.optionsWithAuth)//, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )

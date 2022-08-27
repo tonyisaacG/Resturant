@@ -5,7 +5,6 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { OnlineOrderComponent } from './ComponentTIG/online-order/online-order.component';
 import { ConsumptionComponent } from './consumption/consumption.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { ItemsComponent } from './items/items.component';
 import { AdminPagesComponent } from './LazyLoading/admin-pages/admin-pages.component';

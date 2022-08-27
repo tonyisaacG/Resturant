@@ -34,8 +34,9 @@ export class OrderesmodalComponent implements OnInit {
 
   // }
   // //#endregion
-  
+
   message = false;
+  
 
   //#region 
 
@@ -96,13 +97,14 @@ export class OrderesmodalComponent implements OnInit {
   addOrder(orderForm) {
     if (orderForm.form.valid) {
       if (this.data.typePage == "Edit") {
-       console.log("Edit");
-       this.updateOrder(this.data.id);
-       console.log(this.orderObject)
-       this.message=true;
+        console.log("Edit");
+        this.updateOrder(this.data.id);
+        console.log(this.orderObject)
+        this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
+        this.message = true;
       }
       else if (this.data.typePage == "Add") {
-       this.addNewOrder();
+        this.addNewOrder();
 
       }
     }
@@ -111,20 +113,26 @@ export class OrderesmodalComponent implements OnInit {
   AddDetailsOrder() {
     if (this.data.typePage == "Edit") {
       this.addDetailsOrderInData(this.data.id);
+      this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
+
     }
     else if (this.data.typePage == "Add") {
       this.adddetailsOrderInM();
     }
   }
 
+  
   RemoveItem(product: any) {
+    if(this.orderObject.orderDetailsModels.length>1){
     if (this.data.typePage == "Edit") {
-      this.RemoveDetails(product);
       this.removeDetailsOrderInData(this.data.id, product.product_id)
+      this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
+
     }
     else if (this.data.typePage == "Add") {
       this.RemoveDetails(product);
     }
+  }
   }
 
   //#endregion 
@@ -156,6 +164,10 @@ export class OrderesmodalComponent implements OnInit {
       this.orderObject.orderDetailsModels.length >= 0) {
       let body = this.adddetailsOrderInM()
       this.orderServices.addDetailsOrder(id, body).subscribe((data) => {
+        this.orderServices.getOneOrder(this.orderObject.order_id).subscribe((data)=>{
+          this.orderObject = data;
+        });
+        this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
         console.log(data);
       }, (error) => {
         console.log(error);
@@ -164,13 +176,29 @@ export class OrderesmodalComponent implements OnInit {
   }
 
   removeDetailsOrderInData(id: number, idProduct: number) {
+    if (this.orderObject.orderDetailsModels.length > 1) {
+      this.orderServices.removeDetailsOrder(id, idProduct).subscribe((data) => {
+        this.RemoveDetails(this.ProductLst.find(i=>i.product_id==idProduct));
+        this.orderServices.getOneOrder(this.orderObject.order_id).subscribe((data)=>{
+          this.orderObject = data;
+        });
+        this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
+      }, (error) => {
+        if(error.status==200)
+        {
+          console.log(error.status)
+        this.RemoveDetails(this.ProductLst.find(i=>i.product_id==idProduct));
+        this.orderServices.getOneOrder(this.orderObject.order_id).subscribe((data)=>{
+          this.orderObject = data;
+        });
 
-    this.orderServices.removeDetailsOrder(id, idProduct).subscribe((data) => {
-      console.log(data);
-    }, (error) => {
-      console.log(error);
-    })
+          this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
+        }
+        console.log(error);
+      })
+      this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
 
+    }
   }
 
   //#endregion
@@ -195,19 +223,20 @@ export class OrderesmodalComponent implements OnInit {
     }
   }
   RemoveDetails(product) {
-    this.orderObject.orderDetailsModels.forEach(ele => {
-      if (ele.product_id.toString() == product.product_id.toString()) {
-        if (this.orderObject.totalPrice <= 0) { this.orderObject.totalPrice = 0; }
-        else {
-          this.orderObject.totalPrice -= ele.priceMeal;
-          this.orderObject.orderDetailsModels =
-            this.orderObject.orderDetailsModels.filter(item => item.product_id != product.product_id);
-          console.log(this.orderObject)
-          //  this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
-          console.log(this.orderObject)
+    if (this.orderObject.orderDetailsModels.length > 1) {
+      this.orderObject.orderDetailsModels.forEach(ele => {
+        if (ele.product_id.toString() == product.product_id.toString()) {
+          if (this.orderObject.totalPrice <= 0) { this.orderObject.totalPrice = 0; }
+          else {
+            this.orderObject.totalPrice -= ele.priceMeal;
+            this.orderObject.orderDetailsModels =
+              this.orderObject.orderDetailsModels.filter(item => item.product_id != product.product_id);
+              this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
+
+          }
         }
-      }
-    });
+      });
+    }
   }
   SendNewOrder(Order: IOrderModel) {
     console.log("send")
@@ -236,7 +265,7 @@ export class OrderesmodalComponent implements OnInit {
           ele.quantityMeal += quantity;
           this.orderObject.totalPrice += product.product_price * quantity;
           console.log(this.orderObject)
-          //this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
+          // this.orderServices.updateOrder(this.orderObject.order_id, this.orderObject);
           console.log(this.orderObject);
           flag = false;
         }
@@ -263,22 +292,22 @@ export class OrderesmodalComponent implements OnInit {
   }
   //#endregion
 
-// function to allow number only
+  // function to allow number only
   phkeyPress(event: any) {
     const pattern = /[0-9\+\-\ ]/;
     let inputChar = String.fromCharCode(event.charCode);
-       if (!pattern.test(inputChar)) {
-           event.preventDefault();
-      }
- }
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
 
 
-//function to prevent numbers
+  //function to prevent numbers
   keyPress(event: any) {
     const pattern = /^[\u0621-\u064A\a-zA-Z \-\']+$/;
     let inputChar = String.fromCharCode(event.charCode);
-       if (!pattern.test(inputChar)) {
-           event.preventDefault();
-      }
- }
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
 }

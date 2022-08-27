@@ -36,7 +36,7 @@ export class SingInComponent implements OnInit {
 
     this.UserLogForm = this.loginfrm.group({
       "username": ['', [Validators.required]],
-      "password": ['', [Validators.required, Validators.pattern("^.{6,}$")]]
+      "password": ['', [Validators.required]]
     });
   }
 

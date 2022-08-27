@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from 'src/app/header/header.component';
 import { HomeComponent } from 'src/app/home/home.component';
-import { DashboardComponent } from 'src/app/dashboard/dashboard.component';
 import { SidenavComponent } from 'src/app/sidenav/sidenav.component';
 import { PurchasesComponent } from 'src/app/purchases/purchases.component';
 import { ItemsComponent } from 'src/app/items/items.component';
@@ -25,6 +24,7 @@ import { MaterialModule } from 'src/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateproductmodalComponent } from 'src/app/modals/updateproductmodal/updateproductmodal.component';
 import { CartsModule } from '../../carts/carts/carts.module';
+import { AllOrderComponent } from 'src/app/ComponentTIG/all-order/all-order.component';
 
 const routes: Routes = [
     {path:'', component: AdminPagesComponent ,children:[
@@ -36,6 +36,7 @@ const routes: Routes = [
     {path:'add-user',component:AddUserComponent},
     {path:'addproduct',component:AddproductComponent},
     {path:'addcategory',component:AddcategoryComponent},
+    {path:'Allorder',component:AllOrderComponent},
     {path:'', redirectTo: 'home', pathMatch: 'full' },
     {path:'**',redirectTo:'admin',pathMatch:'full'}  
   ] },
@@ -46,7 +47,6 @@ const routes: Routes = [
     AdminPagesComponent,
     HeaderComponent,
     HomeComponent,
-    DashboardComponent,
     SidenavComponent,
     PurchasesComponent,
     ItemsComponent,
@@ -63,6 +63,8 @@ const routes: Routes = [
     TypeStatusOrderPipe,
     CatProductFilterPipe,
     OnlineOrderComponent,
+    AllOrderComponent
+
   ],
   imports: [
     CommonModule,
@@ -72,29 +74,8 @@ const routes: Routes = [
     MaterialModule,
     NgbModule,
     RouterModule,
-    CartsModule,
     RouterModule.forChild(routes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-
-  //#region 
-  // exports:[
-  //   HeaderComponent,
-  //   HomeComponent,
-  //   DashboardComponent,
-  //   SidenavComponent,
-  //   PurchasesComponent,
-  //   ItemsComponent,
-  //   ConsumptionComponent,
-  //   AddUserComponent,
-  //   AddModalComponent,
-  //   ConsumptionmodalComponent,
-  //   OrderesmodalComponent,
-  //   OrderdetailsmodalComponent,
-  //   AddproductComponent,
-  //   AddcategoryComponent,
-  //   AddproductmodalComponent,
-  // ]
-  //#endregion
 })
 export class AdminModuleModule { }

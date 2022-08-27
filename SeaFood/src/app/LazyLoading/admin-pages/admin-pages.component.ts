@@ -9,9 +9,13 @@ import { AuthUserService } from 'src/app/BackEnd/Services/auth-user.service';
 })
 export class AdminPagesComponent implements OnInit {
 
-  constructor(private auth:AuthUserService,private router:Router) { }
+  constructor(private auth:AuthUserService,private router:Router,) { }
 
   ngOnInit(): void {
+    if(!this.auth.IsLoggin())
+    {
+        this.router.navigate(['signInOut'])
+    }
   }
   sideBarOpen = true;
 

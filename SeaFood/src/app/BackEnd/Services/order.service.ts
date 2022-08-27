@@ -66,7 +66,7 @@ export class OrderService {
   }
   removeDetailsOrder(idO: number, idP: number): Observable<IOrderDetails> {
     return this.http.delete<IOrderDetails>(`${environment.urlApi}/Orders/DeleteOrderDetails/${idO}/${idP}`, this.options).pipe(catchError((error) => {
-      return throwError(error.message);
+      return throwError(error);
     }));
   }
   getOneOrder(id: number): Observable<IOrderModel> {
@@ -91,6 +91,16 @@ export class OrderService {
       return throwError(error.message);
     }));
   }
+
+
+  GetAllOrder(): Observable<IOrderModel[]> {
+    //http://localhost:24637/api/Orders
+
+    return this.http.get<IOrderModel[]>(`${environment.urlApi}/Orders`,this.options).pipe(catchError((error) => {
+      return throwError(error.message);
+    }));
+  }
+
   changeTypeOrder(id: number, type: OrderType): Observable<any> {
     return this.http.put<any>(`${environment.urlApi}/Orders/changeType/${id}/${type}`, JSON.stringify({ id, type }), this.options).pipe(catchError((error) => {
       return throwError(error.message);

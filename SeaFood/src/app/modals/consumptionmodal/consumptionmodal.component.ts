@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Form, FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { ConsumService } from 'src/app/BackEnd/Services/consum.service';
@@ -33,6 +33,16 @@ export class ConsumptionmodalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private consumServices: ConsumService) { }
   //#endregion
+
+  maxQuantity=0;
+
+
+  selectitem(){
+    this.ConsumDetailsQuantity=1;
+    this.maxQuantity = this.ItemsLst.find(i=>i.id==this.itemId).totalQuantity;
+    console.log(this.maxQuantity);
+  }
+
 
   //#region 
   ngOnInit(): void {

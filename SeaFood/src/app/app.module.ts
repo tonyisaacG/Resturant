@@ -43,7 +43,7 @@ import { CartsModule } from '../app/carts/carts/carts.module';
     AppComponent,
     SingInComponent,
     NotFoundComponent,
-    UserPageComponent
+    UserPageComponent,
   ],
   imports: [
     CommonModule,
@@ -67,7 +67,6 @@ import { CartsModule } from '../app/carts/carts/carts.module';
     SharedModule,
     ProductsModule,
     CartsModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent],

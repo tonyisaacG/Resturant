@@ -27,6 +27,7 @@ import { environment } from 'src/environments/environment';
   inputProduct: Products = new Products();
   data: any;
   updateform: FormGroup;
+  path:string='';
   @Input()
   updateproduct: Products =new Products();
   @Output()  updatep: EventEmitter<Products[]> = new EventEmitter();
@@ -52,8 +53,12 @@ import { environment } from 'src/environments/environment';
     })
     this.categories = this.getsofcats();
     console.log(this.categories);
-   this.productservices.getById(this.data.id).subscribe(result => {this.updateproduct = result});
+   this.productservices.getById(this.data.id).subscribe(result => {
+     this.updateproduct = result;
+     this.path = result.product_imagePath;
+    });
     console.log(this.updateproduct);
+    
   }
 
   ngOnChanges():void{
@@ -82,9 +87,10 @@ import { environment } from 'src/environments/environment';
     this.updateproduct.product_description = this.updateform.get('product_description').value==''?this.updateproduct.product_description:this.updateform.get('product_description').value;
     // this.inputProduct.cat_name=this.uploadform.get('cat_name')?.value;
      //this.inputProduct.cat_id=this.uploadform.get('cat_id')?.value;
-     this.inputProduct.product_imagePath=this.updateform.get('product_imagePath')?.value;
-
-    this.productservices.updateproducts(this.updateproduct).subscribe(c => { console.log(this.updateform); });
+     
+      console.log(this.updateproduct);
+      console.log(this.path)
+    this.productservices.updateproducts(this.data.id,this.updateproduct,this.path).subscribe(c => { console.log(this.updateform); });
     //  this.productservices.addproduct(this.formdata).subscribe(c => { console.log(this.uploadform); });
  this.mess=true;
   } 
@@ -95,9 +101,11 @@ import { environment } from 'src/environments/environment';
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (_event) => {
+      
       this.url = reader.result;
-      this.updateproduct.product_imagePathsrc = event.target.files[0];
-      this.updateproduct.product_imagePath = event.target.files[0].name;
+      this.updateproduct.product_imagePathSrc = event.target.files[0];
+      this.updateproduct.product_imagePath = this.url;
+      
     }
   }
 
